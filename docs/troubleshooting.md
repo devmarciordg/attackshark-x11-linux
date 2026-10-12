@@ -16,7 +16,7 @@ The mouse goes to sleep within seconds of inactivity and does not answer configu
 
 Install the udev rule from the README, reload, and replug the dongle:
 
-    sudo cp 99-attackshark.rules /etc/udev/rules.d/
+    sudo cp packaging/udev/99-attackshark.rules /etc/udev/rules.d/
     sudo udevadm control --reload && sudo udevadm trigger
 
 Check the result: `ls -l /dev/hidraw*`. With `uaccess`, the device gets an ACL for your user (`getfacl /dev/hidrawN`). If it still fails:

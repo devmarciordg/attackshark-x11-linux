@@ -37,13 +37,13 @@ A GUI precisa de PyGObject e GTK 4 da sua distribuição (`python3-gobject` e `g
 
 ### Regra udev (acesso sem root)
 
-A ferramenta fala com o mouse por `/dev/hidraw*`, que por padrão é só do root. O arquivo `99-attackshark.rules` libera o acesso ao usuário logado com a tag `uaccess`:
+A ferramenta fala com o mouse por `/dev/hidraw*`, que por padrão é só do root. O arquivo `packaging/udev/99-attackshark.rules` libera o acesso ao usuário logado com a tag `uaccess`:
 
-    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1d57", ATTRS{idProduct}=="fa60|2126", TAG+="uaccess"
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1d57", ATTRS{idProduct}=="fa60|2126", TAG+="uaccess", MODE="0660"
 
 Instale e reconecte o dongle:
 
-    sudo cp 99-attackshark.rules /etc/udev/rules.d/
+    sudo cp packaging/udev/99-attackshark.rules /etc/udev/rules.d/
     sudo udevadm control --reload && sudo udevadm trigger
 
 `uaccess` vale para o usuário na sessão local ativa; não funciona via SSH. A regra casa só o vendor `1d57` e os dois product IDs acima.
