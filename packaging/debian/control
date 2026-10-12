@@ -1,0 +1,14 @@
+Source: attackshark-x11
+Section: utils
+Priority: optional
+Maintainer: Maintainer <maintainer@example.invalid>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools, pybuild-plugin-pyproject
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+
+Package: attackshark-x11
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3-gi, gir1.2-gtk-4.0, gir1.2-adw-1
+Description: Configuration tool for the Attack Shark X11 mouse
+ Open-source tool to configure DPI, buttons, macros and profiles, with a
+ GTK4 GUI and a command line interface.

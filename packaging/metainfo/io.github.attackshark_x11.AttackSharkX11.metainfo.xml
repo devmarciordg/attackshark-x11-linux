@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.attackshark_x11.AttackSharkX11</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Attack Shark X11</name>
+  <summary>Configure the Attack Shark X11 mouse</summary>
+  <description>
+    <p>Open-source Linux configuration tool for the Attack Shark X11 mouse: DPI, buttons, macros and profiles, from a GTK4 app or the command line.</p>
+    <p>This is an unofficial community project, not affiliated with the vendor.</p>
+  </description>
+  <launchable type="desktop-id">attackshark-x11.desktop</launchable>
+  <provides><binary>attackshark-x11</binary><binary>attackshark-x11-gui</binary></provides>
+  <categories><category>Settings</category><category>HardwareSettings</category></categories>
+  <content_rating type="oars-1.1"/>
+  <supports><control>pointing</control></supports>
+  <releases><release version="0.1.0" date="2026-10-12"/></releases>
+</component>

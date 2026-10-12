@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+export PYBUILD_NAME=attackshark-x11
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_install:
+	dh_auto_install
+	install -Dm644 packaging/udev/99-attackshark.rules debian/attackshark-x11/usr/lib/udev/rules.d/99-attackshark.rules
+	install -Dm644 packaging/desktop/attackshark-x11.desktop debian/attackshark-x11/usr/share/applications/attackshark-x11.desktop
+	install -Dm644 packaging/icons/io.github.attackshark_x11.AttackSharkX11.svg debian/attackshark-x11/usr/share/icons/hicolor/scalable/apps/io.github.attackshark_x11.AttackSharkX11.svg
+	install -Dm644 packaging/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml debian/attackshark-x11/usr/share/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml

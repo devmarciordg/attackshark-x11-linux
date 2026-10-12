@@ -1,0 +1,25 @@
+app-id: io.github.attackshark_x11.AttackSharkX11
+runtime: org.gnome.Platform
+runtime-version: '49'
+sdk: org.gnome.Sdk
+command: attackshark-x11-gui
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  # hidraw access needs --device=all. The udev rule (uaccess) must ALSO be on the host.
+  - --device=all
+modules:
+  - name: attackshark-x11
+    buildsystem: simple
+    build-commands:
+      - python3 -m pip install --no-deps --no-build-isolation --prefix=${FLATPAK_DEST} .
+      - install -Dm644 packaging/desktop/attackshark-x11.desktop ${FLATPAK_DEST}/share/applications/io.github.attackshark_x11.AttackSharkX11.desktop
+      - sed -i 's/^Exec=.*/Exec=attackshark-x11-gui/' ${FLATPAK_DEST}/share/applications/io.github.attackshark_x11.AttackSharkX11.desktop
+      - install -Dm644 packaging/icons/io.github.attackshark_x11.AttackSharkX11.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/io.github.attackshark_x11.AttackSharkX11.svg
+      - install -Dm644 packaging/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml ${FLATPAK_DEST}/share/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml
+      - sed -i "s/attackshark-x11.desktop/io.github.attackshark_x11.AttackSharkX11.desktop/" ${FLATPAK_DEST}/share/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml
+    sources:
+      - type: dir
+        path: ../..

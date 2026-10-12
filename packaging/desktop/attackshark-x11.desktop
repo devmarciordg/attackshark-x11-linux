@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Attack Shark X11
+GenericName=Mouse Configuration
+Comment=Configure the Attack Shark X11 mouse
+Exec=attackshark-x11-gui
+Icon=io.github.attackshark_x11.AttackSharkX11
+Terminal=false
+Categories=Settings;HardwareSettings;GTK;
+Keywords=mouse;dpi;macro;attack;shark;
+StartupNotify=true
