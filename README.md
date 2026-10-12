@@ -48,7 +48,7 @@ Install it, then replug the dongle:
     sudo cp packaging/udev/70-attackshark.rules /etc/udev/rules.d/
     sudo udevadm control --reload && sudo udevadm trigger
 
-`uaccess` must be tagged before `73-seat-late.rules`; if access fails, install the file as `70-attackshark.rules` instead. It gives access to the user at the active local seat. It does not work over SSH or for users who are not logged in locally. The rule matches only vendor ID `1d57` and the two product IDs above. If `lsusb` shows a different product ID for your dongle, see [docs/troubleshooting.md](docs/troubleshooting.md).
+`uaccess` must be tagged before `73-seat-late.rules`. It gives access to the user at the active local seat. It does not work over SSH or for users who are not logged in locally. The rule matches only vendor ID `1d57` and the two product IDs above. If `lsusb` shows a different product ID for your dongle, see [docs/troubleshooting.md](docs/troubleshooting.md).
 
 ## Quick start
 
