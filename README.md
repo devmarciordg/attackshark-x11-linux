@@ -2,8 +2,8 @@
 
 Clone of `ATTACK SHARK X11 SOFT.exe` (an Inno Setup installer; the real app is `AttackShark.exe`, C++/DuiLib, model 4 = "X11 Mouse").
 
-    python3 attackshark_gui.py            # GTK4 app
-    python3 attackshark_x11.py show       # CLI: show | dpi N DPI | active N | color N RRGGBB | light --mode N --rgb RRGGBB [--brightness N --breath-speed N] | rate HZ | sleep --min N --deep N --debounce MS | raw
+    attackshark-x11-gui                  # GTK4 app (pip install -e . or PYTHONPATH=src python3 -m attackshark_x11.gui.app)
+    attackshark-x11 show                  # CLI (PYTHONPATH=src python3 -m attackshark_x11.cli): show | dpi N DPI | active N | color N RRGGBB | light --mode N --rgb RRGGBB [--brightness N --breath-speed N] | rate HZ | sleep --min N --deep N --debounce MS | raw
 
 The mouse sleeps fast: move it while a command runs (the tool waits up to ~100 s).
 Optional: `sudo cp 99-attackshark.rules /etc/udev/rules.d/ && sudo udevadm control --reload && sudo udevadm trigger` for non-root hidraw access.
@@ -23,7 +23,7 @@ Vendor HID interface (declares feature report 0xA0). All traffic = feature repor
 
 ## Not done / unverified
 - Light modes 0, 3-6, brightness, breathing speed, sleep timers and debounce: decoded from the app's sliders, not all confirmed on the LED/mouse (mode 1 Static, 2 Breathing and polling rate were).
-- Buttons (report 8, 59 B: 18 x [type,a,b] + csum16) and macros (report 9, 131 B sent as 3 feature reports: `09 40 slot 0|1` + 60 B, `09 0C slot 02` + 8 B) are decoded from AttackShark.exe (FUN_004a26c0 / FUN_004a2430) and exposed as CLI `button` / `macro`, but NOT tested on the mouse. Report 8 cannot be read back, so the map is kept in ~/.config/attackshark_buttons.json.
+- Buttons (report 8, 59 B: 18 x [type,a,b] + csum16) and macros (report 9, 131 B sent as 3 feature reports: `09 40 slot 0|1` + 60 B, `09 0C slot 02` + 8 B) are decoded from AttackShark.exe (FUN_004a26c0 / FUN_004a2430) and exposed as CLI `button` / `macro`, but NOT tested on the mouse. Report 8 cannot be read back, so the map is kept in ~/.config/attackshark-x11/buttons.json.
 - The factory-defaults routine used for `defaults` (0x447d00) belongs to the MS_13 class; the MS_4 (X11) class reset (0x4a4670) gives 800/1600/2400/3200/5000/22000 DPI and 1000 Hz. Unresolved which class the dongle really uses.
 - Report 6 byte 3 is one-hot (1/2/4/8 = 1000/500/250/125 Hz), byte 4 is its complement. Input events: 0x10 DPI stage, 0x20 polling, 0x40 battery, 0x50 write ack, 0x70 light mode.
 - DPI values decode with the app's own formula; not cross-checked against real pointer speed.
