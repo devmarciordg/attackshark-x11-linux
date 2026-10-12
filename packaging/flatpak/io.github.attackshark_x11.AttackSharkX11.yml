@@ -15,11 +15,10 @@ modules:
     buildsystem: simple
     build-commands:
       - python3 -m pip install --no-deps --no-build-isolation --prefix=${FLATPAK_DEST} .
-      - install -Dm644 packaging/desktop/attackshark-x11.desktop ${FLATPAK_DEST}/share/applications/io.github.attackshark_x11.AttackSharkX11.desktop
+      - install -Dm644 packaging/desktop/io.github.attackshark_x11.AttackSharkX11.desktop ${FLATPAK_DEST}/share/applications/io.github.attackshark_x11.AttackSharkX11.desktop
       - sed -i 's/^Exec=.*/Exec=attackshark-x11-gui/' ${FLATPAK_DEST}/share/applications/io.github.attackshark_x11.AttackSharkX11.desktop
       - install -Dm644 packaging/icons/io.github.attackshark_x11.AttackSharkX11.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/io.github.attackshark_x11.AttackSharkX11.svg
       - install -Dm644 packaging/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml ${FLATPAK_DEST}/share/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml
-      - sed -i "s/attackshark-x11.desktop/io.github.attackshark_x11.AttackSharkX11.desktop/" ${FLATPAK_DEST}/share/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml
     sources:
       - type: dir
         path: ../..

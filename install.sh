@@ -45,7 +45,7 @@ for c in "$APP" "$APP-gui"; do
   printf '#!/bin/sh\nexec "%s/venv/bin/%s" "$@"\n' "$PREFIX" "$c" > "$BIN/$c"
   chmod +x "$BIN/$c"
 done
-install -m 644 "$SRC/packaging/desktop/$APP.desktop" "$DATA/applications/"
+install -m 644 "$SRC/packaging/desktop/$ID.desktop" "$DATA/applications/"
 install -m 644 "$SRC/packaging/icons/$ID.svg" "$DATA/icons/hicolor/scalable/apps/"
 install -m 644 "$SRC/packaging/metainfo/$ID.metainfo.xml" "$DATA/metainfo/"
 command -v update-desktop-database >/dev/null && update-desktop-database "$DATA/applications" || true

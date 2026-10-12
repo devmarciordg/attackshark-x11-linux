@@ -9,7 +9,7 @@ wheel sdist:
 lint:
 	$(PY) -m compileall -q src
 	-shellcheck install.sh uninstall.sh
-	desktop-file-validate packaging/desktop/attackshark-x11.desktop
+	desktop-file-validate packaging/desktop/io.github.attackshark_x11.AttackSharkX11.desktop
 	-appstreamcli validate --no-net packaging/metainfo/*.xml
 test:
 	$(PY) -m pytest

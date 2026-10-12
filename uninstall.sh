@@ -17,7 +17,7 @@ done
 
 rm -rf "${DATA:?}/$APP"
 rm -f "$HOME/.local/bin/$APP" "$HOME/.local/bin/$APP-gui" \
-  "$DATA/applications/$APP.desktop" \
+  "$DATA/applications/$ID.desktop" \
   "$DATA/icons/hicolor/scalable/apps/$ID.svg" \
   "$DATA/metainfo/$ID.metainfo.xml"
 
