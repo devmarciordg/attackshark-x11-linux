@@ -4,7 +4,7 @@ import threading
 from concurrent.futures import ThreadPoolExecutor
 
 from .. import buttons, hid, profiles
-from ..hid import DeviceError, DeviceNotFound, DevicePermissionError, DeviceTimeout
+from ..hid import DeviceNotFound, DevicePermissionError, DeviceTimeout
 from ..protocol import build_dpi, build_light, build_rate, parse_dpi, parse_light, parse_rate
 
 READ_RETRIES = 8  # ~4 s: hid.Device.read defaults to 200 tries (100 s), far too long for a UI

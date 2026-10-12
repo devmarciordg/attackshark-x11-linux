@@ -15,7 +15,7 @@ except (ValueError, ImportError):
 
 def main():
     from .window import MainWindow
-    app = _Base(application_id="io.github.attackshark_x11")
+    app = _Base(application_id="io.github.attackshark_x11.AttackSharkX11")
     app.connect("activate", lambda a: MainWindow(a).present())
     return app.run(None)
 

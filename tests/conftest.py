@@ -1,7 +1,7 @@
 import pytest
 
 from attackshark_x11 import factory
-from attackshark_x11.protocol import SIZES, build_dpi, build_light, csum_light
+from attackshark_x11.protocol import SIZES, build_dpi, csum_light
 
 
 class FakeDevice:

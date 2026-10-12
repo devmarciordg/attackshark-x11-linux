@@ -1,4 +1,4 @@
-line-length = 120
+line-length = 150
 target-version = "py39"
 src = ["src", "tests"]
 
@@ -6,3 +6,6 @@ src = ["src", "tests"]
 select = ["E", "F", "W", "I", "B", "UP"]
 # E741: names like `l` for light config are used in places; UP/B rules kept lenient for py3.9 target
 ignore = ["E741", "UP015"]
+
+[lint.per-file-ignores]
+"src/attackshark_x11/gui/*.py" = ["E402"]

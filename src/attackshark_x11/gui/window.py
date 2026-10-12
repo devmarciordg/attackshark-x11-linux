@@ -6,8 +6,9 @@ import gi
 gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk  # noqa: E402
 
-from .. import __version__, hid  # noqa: E402
-from . import pages, worker as workermod  # noqa: E402
+from .. import __version__  # noqa: E402
+from . import pages  # noqa: E402
+from . import worker as workermod
 from .i18n import tr  # noqa: E402
 
 BATTERY = "Battery: {pct}% ({status})"

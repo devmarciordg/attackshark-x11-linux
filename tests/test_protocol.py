@@ -1,8 +1,20 @@
 import pytest
 
 from attackshark_x11 import factory
-from attackshark_x11.protocol import (ProtocolError, build_dpi, build_light, build_rate, csum_dpi, csum_light,
-                                      dpi_decode, dpi_encode, parse_dpi, parse_event, parse_light, parse_rate)
+from attackshark_x11.protocol import (
+    ProtocolError,
+    build_dpi,
+    build_light,
+    build_rate,
+    csum_dpi,
+    csum_light,
+    dpi_decode,
+    dpi_encode,
+    parse_dpi,
+    parse_event,
+    parse_light,
+    parse_rate,
+)
 
 
 def test_dpi_encode_decode_roundtrip():

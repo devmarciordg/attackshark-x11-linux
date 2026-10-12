@@ -94,7 +94,6 @@ def test_worker_buttons_saved(dev):
     state = profiles.default_buttons()
     _, err = run_job(w, worker.apply_buttons, state)
     assert err is None and dev.writes[-1][0] == 8
-    n = len(dev.writes)
     state["codes"] = [0 if c == 1 else c for c in state["codes"]]  # no Left Click: core refuses to save it
     _, err = run_job(w, worker.apply_buttons, state)
     assert isinstance(err, ValueError) and profiles.load_buttons()["codes"] != state["codes"]
