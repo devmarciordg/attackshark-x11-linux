@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "attackshark-x11"
+version = "0.1.0"
+description = "Open-source Linux configuration tool for the Attack Shark X11 mouse"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = []  # core is stdlib only
+
+[project.optional-dependencies]
+# The GUI needs PyGObject + GTK4 from the distro (e.g. python3-gobject, gtk4);
+# they cannot be installed with pip in a useful way, so this extra is documentation only.
+gui = []
+test = ["pytest"]
+
+[project.scripts]
+attackshark-x11 = "attackshark_x11.cli:main"
+attackshark-x11-gui = "attackshark_x11.gui.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
