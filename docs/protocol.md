@@ -208,15 +208,15 @@ After the macro is written, the button is assigned function `0x11` in report 8 w
 
 ## Input events
 
-Input report on the config interface: `03 55 T lo hi`. [hw] means observed.
+Input report on the config interface: `03 55 T lo hi`. Only the battery layout is confirmed on hardware.
 
 | T | Event | Payload | Status |
 |---|---|---|---|
-| 0x10 | DPI stage changed | stage number; 0- or 1-based unverified | [hw] type seen |
-| 0x20 | Polling rate changed | one-hot rate value | [hw] type seen |
+| 0x10 | DPI stage changed | stage number; 0- or 1-based unverified | decoded, payload unverified |
+| 0x20 | Polling rate changed | one-hot rate value | decoded, payload unverified |
 | 0x40 | Battery | byte 3 = status (1 discharging, 2 charging, 3 low), byte 4 = percent | [hw] |
-| 0x50 | Write acknowledged | unknown | [hw] type seen |
-| 0x70 | Light mode changed | mode number | [hw] type seen |
+| 0x50 | Write acknowledged | unknown | decoded, payload unverified |
+| 0x70 | Light mode changed | mode number | decoded, payload unverified |
 
 Payload layouts other than battery are best guesses in `protocol.parse_event`. `attackshark-x11 monitor` prints events, including the raw hex, which is useful for refining this table.
 
