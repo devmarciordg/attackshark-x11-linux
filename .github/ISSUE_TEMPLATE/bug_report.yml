@@ -1,0 +1,28 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Command or GUI steps
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Distro, kernel, Python version, install method (pip, Flatpak, distro package)
+    validations:
+      required: true
+  - type: textarea
+    id: out
+    attributes:
+      label: Full output (include `attackshark-x11 raw` if the mouse is involved)
+      render: text

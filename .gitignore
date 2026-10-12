@@ -6,3 +6,11 @@ backup_*.hex
 dist/
 build/
 *.egg-info/
+
+# Local reverse-engineering workspaces (vendor files must never be committed)
+re-work/
+ghidra-projects/
+*.gpr
+*.rep/
+*.iss
+installer-extract/
