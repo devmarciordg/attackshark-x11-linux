@@ -39,13 +39,13 @@ Requires Python 3.9 or newer.
 
 ### udev rule (non-root access)
 
-The tool talks to the mouse through `/dev/hidraw*`, which is root-only by default. The file `packaging/udev/99-attackshark.rules` grants the logged-in user access with the `uaccess` tag:
+The tool talks to the mouse through `/dev/hidraw*`, which is root-only by default. The file `packaging/udev/70-attackshark.rules` grants the logged-in user access with the `uaccess` tag:
 
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1d57", ATTRS{idProduct}=="fa60|2126", TAG+="uaccess", MODE="0660"
 
 Install it, then replug the dongle:
 
-    sudo cp packaging/udev/99-attackshark.rules /etc/udev/rules.d/
+    sudo cp packaging/udev/70-attackshark.rules /etc/udev/rules.d/
     sudo udevadm control --reload && sudo udevadm trigger
 
 `uaccess` must be tagged before `73-seat-late.rules`; if access fails, install the file as `70-attackshark.rules` instead. It gives access to the user at the active local seat. It does not work over SSH or for users who are not logged in locally. The rule matches only vendor ID `1d57` and the two product IDs above. If `lsusb` shows a different product ID for your dongle, see [docs/troubleshooting.md](docs/troubleshooting.md).

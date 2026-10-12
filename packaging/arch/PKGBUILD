@@ -19,7 +19,7 @@ build() {
 package() {
   cd "attackshark_x11-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 packaging/udev/99-attackshark.rules "$pkgdir/usr/lib/udev/rules.d/99-attackshark.rules"
+  install -Dm644 packaging/udev/70-attackshark.rules "$pkgdir/usr/lib/udev/rules.d/70-attackshark.rules"
   install -Dm644 packaging/desktop/attackshark-x11.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 packaging/icons/io.github.attackshark_x11.AttackSharkX11.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 packaging/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml -t "$pkgdir/usr/share/metainfo/"

@@ -16,13 +16,13 @@ The mouse goes to sleep within seconds of inactivity and does not answer configu
 
 Install the udev rule from the README, reload, and replug the dongle:
 
-    sudo cp packaging/udev/99-attackshark.rules /etc/udev/rules.d/
+    sudo cp packaging/udev/70-attackshark.rules /etc/udev/rules.d/
     sudo udevadm control --reload && sudo udevadm trigger
 
 Check the result: `ls -l /dev/hidraw*`. With `uaccess`, the device gets an ACL for your user (`getfacl /dev/hidrawN`). If it still fails:
 
 - You must be logged in on a local seat (not only SSH). `loginctl show-session self -p Active -p Remote`.
-- The `uaccess` tag must be set before `73-seat-late.rules` runs (see `man systemd-udevd`/`uaccess`). A file named `99-attackshark.rules` sorts after it, so the tag may have no effect on some systems. If access still fails, install the same content as `70-attackshark.rules`.
+- The `uaccess` tag must be set before `73-seat-late.rules` runs (see `man systemd-udevd`/`uaccess`), so the rule is installed with the `70-` prefix. Do not rename it to a higher number.
 - Your distro may ship a rule that already matches; check `udevadm info /dev/hidrawN`.
 - As a last resort for testing only: `sudo attackshark-x11 show`. Do not leave the GUI running as root.
 

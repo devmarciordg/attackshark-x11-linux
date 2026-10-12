@@ -8,7 +8,7 @@ SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DATA="${XDG_DATA_HOME:-$HOME/.local/share}"
 PREFIX="$DATA/$APP"
 BIN="$HOME/.local/bin"
-RULE=/etc/udev/rules.d/99-attackshark.rules
+RULE=/etc/udev/rules.d/70-attackshark.rules
 udev=1 uninstall=0
 
 for a in "$@"; do
@@ -53,12 +53,12 @@ command -v gtk-update-icon-cache >/dev/null && gtk-update-icon-cache -q -t "$DAT
 
 if [ "$udev" = 1 ]; then
   echo "About to run with elevated privileges:"
-  echo "  install -m 644 packaging/udev/99-attackshark.rules $RULE"
+  echo "  install -m 644 packaging/udev/70-attackshark.rules $RULE"
   echo "  udevadm control --reload-rules && udevadm trigger --subsystem-match=hidraw"
   if [ -t 0 ]; then read -r -p "Proceed? [y/N] " ans; else ans=y; fi
   case "$ans" in
     [yY]*)
-      as_root install -m 644 "$SRC/packaging/udev/99-attackshark.rules" "$RULE"
+      as_root install -m 644 "$SRC/packaging/udev/70-attackshark.rules" "$RULE"
       as_root udevadm control --reload-rules
       as_root udevadm trigger --subsystem-match=hidraw ;;
     *) echo "Skipped udev rule (re-run without --no-udev to install it)." ;;

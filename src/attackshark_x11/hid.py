@@ -15,7 +15,7 @@ VID = 0x1D57
 PIDS = (0xFA60, 0x2126)
 
 UDEV_HINT = ("no permission on {path}. Install the udev rule: "
-             "sudo cp 99-attackshark.rules /etc/udev/rules.d/ && sudo udevadm control --reload && sudo udevadm trigger "
+             "sudo cp packaging/udev/70-attackshark.rules /etc/udev/rules.d/ && sudo udevadm control --reload && sudo udevadm trigger "
              "(then replug the dongle)")
 
 

@@ -31,7 +31,7 @@ from a GTK4 app or the command line.
 %install
 %pyproject_install
 %pyproject_save_files attackshark_x11
-install -Dm644 packaging/udev/99-attackshark.rules %{buildroot}%{_udevrulesdir}/99-attackshark.rules
+install -Dm644 packaging/udev/70-attackshark.rules %{buildroot}%{_udevrulesdir}/70-attackshark.rules
 install -Dm644 packaging/desktop/attackshark-x11.desktop -t %{buildroot}%{_datadir}/applications/
 install -Dm644 packaging/icons/io.github.attackshark_x11.AttackSharkX11.svg -t %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 install -Dm644 packaging/metainfo/io.github.attackshark_x11.AttackSharkX11.metainfo.xml -t %{buildroot}%{_metainfodir}/
@@ -42,7 +42,7 @@ udevadm control --reload-rules >/dev/null 2>&1 || :
 %files -f %{pyproject_files}
 %{_bindir}/attackshark-x11
 %{_bindir}/attackshark-x11-gui
-%{_udevrulesdir}/99-attackshark.rules
+%{_udevrulesdir}/70-attackshark.rules
 %{_datadir}/applications/attackshark-x11.desktop
 %{_datadir}/icons/hicolor/scalable/apps/io.github.attackshark_x11.AttackSharkX11.svg
 %{_metainfodir}/io.github.attackshark_x11.AttackSharkX11.metainfo.xml

@@ -1,6 +1,6 @@
 # Packaging
 
-Package and file names use `attackshark-x11`. Udev rule: `udev/99-attackshark.rules`
+Package and file names use `attackshark-x11`. Udev rule: `udev/70-attackshark.rules`
 (`TAG+="uaccess"` for 1d57:fa60 and 1d57:2126, so no root or groups are needed).
 
 | Item | Status |
@@ -25,5 +25,5 @@ Package and file names use `attackshark-x11`. Udev rule: `udev/99-attackshark.ru
 ## Flatpak
 
 The sandbox needs `--device=all` to reach `/dev/hidraw*`. The udev rule must still be installed on the host
-(`sudo install -m644 packaging/udev/99-attackshark.rules /etc/udev/rules.d/`), because the sandbox cannot
+(`sudo install -m644 packaging/udev/70-attackshark.rules /etc/udev/rules.d/`), because the sandbox cannot
 change device permissions. Build: `flatpak-builder --user --install --force-clean build packaging/flatpak/*.yml`.

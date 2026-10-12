@@ -1,7 +1,7 @@
 """Command line for the Attack Shark X11 (2.4G dongle 1d57:fa60 or wired 1d57:2126).
 
 Protocol recovered from ATTACK SHARK X11 SOFT.exe; see README.md. Needs read/write access to /dev/hidrawN
-(udev rule in 99-attackshark.rules). Exit codes: 0 ok, 1 error, 2 usage, 3 device not found, 4 no permission, 5 timeout.
+(udev rule in 70-attackshark.rules). Exit codes: 0 ok, 1 error, 2 usage, 3 device not found, 4 no permission, 5 timeout.
 """
 import argparse
 import json

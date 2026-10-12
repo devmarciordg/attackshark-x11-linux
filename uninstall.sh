@@ -5,7 +5,7 @@ set -euo pipefail
 APP=attackshark-x11
 ID=io.github.attackshark_x11.AttackSharkX11
 DATA="${XDG_DATA_HOME:-$HOME/.local/share}"
-RULE=/etc/udev/rules.d/99-attackshark.rules
+RULE=/etc/udev/rules.d/70-attackshark.rules
 udev=1
 for a in "$@"; do
   case "$a" in
