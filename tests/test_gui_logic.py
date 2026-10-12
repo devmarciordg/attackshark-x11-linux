@@ -112,3 +112,9 @@ def test_monitor_forwards_battery():
     w.start_monitor(lambda e: (got.append(e), setattr(Mouse, "n", 1), ev.set()))
     assert ev.wait(5) and got[0]["percent"] == 55 and got[0]["status"] == "charging"
     w.stop()
+
+
+def test_button_function_names_have_pt_br():
+    from attackshark_x11 import buttons
+    missing = sorted(n for n in buttons._NAMES.values() if n not in i18n.PT_BR)
+    assert not missing, missing

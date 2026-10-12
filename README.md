@@ -79,7 +79,7 @@ Install it, then replug the dongle:
 | `defaults [--preset {ms4,ms13}]` | Write a factory DPI table and polling rate; light and sleep untouched (unverified which preset matches) |
 | `buttons-default` | Write the vendor default button map (unverified) |
 | `functions` | List button function codes |
-| `button SLOT FUNCTION` | Assign a function to a button 1-18. `FUNCTION` is a hex code, a name, or `key:<combo>`, e.g. `button 4 0x34`, `button 4 key:ctrl+c`, `button 4 'Left Click'` (unverified) |
+| `button SLOT FUNCTION` | Assign a function to a button 1-18. `FUNCTION` is a hex code, a name, or `key:<combo>`, e.g. `button 4 0x06`, `button 4 key:ctrl+c`, `button 4 'Left Click'` (unverified) |
 | `macro SLOT [--file F] [--mode {0,1,2}] [--loop N] [events ...]` | Write a macro and assign it, e.g. `macro 4 --loop 3 +a:30 -a:30`. Events are `+key:delay_ms` (press) and `-key:delay_ms` (release); `lmb`, `rmb`, `mmb` are mouse buttons (unverified) |
 | `profile save\|load\|delete NAME`, `profile list`, `profile export NAME PATH`, `profile import PATH [--name N]` | Whole-device profiles stored as JSON |
 | `raw` | Dump reports 4, 5 and 6 as hex |

@@ -34,7 +34,7 @@ def test_key_helpers():
     assert buttons.key_usage("a") == 4 and buttons.key_usage("0") == 39 and buttons.key_usage("f1") == 58
     assert buttons.parse_key_combo("ctrl+shift+a") == (3, 4)
     assert buttons.format_key_combo(1, 6) == "Ctrl+C"
-    assert buttons.parse_function("0x34") == (0x34, None)
+    assert buttons.parse_function("0x06") == (0x06, None)
     assert buttons.parse_function("key:alt+tab") == (0x10, (4, 43))
     with pytest.raises(ValueError):
         buttons.parse_function("0xff")

@@ -212,7 +212,7 @@ class ButtonRow:
         self.page, self.slot = page, slot
         self.box = Gtk.Box(spacing=8)
         self.box.append(Gtk.Label(label=tr("Button {n}", n=slot + 1), xalign=0, width_chars=10))
-        self.func = Gtk.DropDown.new_from_strings([tr(n) if not n.startswith("Function") else n for n in names.values()])
+        self.func = Gtk.DropDown.new_from_strings([tr(n) for n in names.values()])
         self.codes = list(names)
         self.func.connect("notify::selected", lambda *_: self.sync())
         self.box.append(self.func)

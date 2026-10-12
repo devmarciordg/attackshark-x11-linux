@@ -73,6 +73,7 @@ BUTTON_FUNCS = {
     0x2a: (17, 4, 61),
     0x2d: (17, 8, 21),
     0x2e: (17, 8, 15),
+    0x32: (17, 0xa, 0x16),  # Screen Capture (Win+Shift+S); in the vendor table, not in this map before
 }
 # model 4 default code per slot (table 0x4e78a0); last two swapped: vendor order inverted the wheel on this mouse
 BUTTON_DEFAULTS = [0x1, 0x2, 0x3, 0x6, 0x5, 0x4, 0x34, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xb, 0xc]
@@ -92,9 +93,22 @@ KEY_NAMES = {}
 for _n, _u in KEY_USAGES.items():
     KEY_NAMES.setdefault(_u, _n)
 
-# Names are best effort; codes without a name show as "Function 0xNN". Basic ones follow X11_FIXES / defaults.
+# Names come from the vendor UI: label switch FUN_004ab3c0 (AttackShark.exe 0x4ab3c0) maps function id -> text id,
+# res/lan/EN.xml gives the text. Not verified on hardware. Ids 0x13, 0x15, 0x73, 0x34 have no label in any model:
+# their names below are INFERRED (see docs/protocol.md) and flagged "(unverified)" so the GUI shows it.
 _NAMES = {0x00: "Disabled", 0x01: "Left Click", 0x02: "Right Click", 0x03: "Middle Click", 0x04: "Forward",
-          0x05: "Back", 0x0B: "Wheel Up", 0x0C: "Wheel Down", KEY_FUNC: "Keyboard Key", MACRO_FUNC: "Macro"}
+          0x05: "Back", 0x06: "DPI Cycle", 0x07: "DPI +", 0x08: "DPI -", 0x09: "Double Click", 0x0A: "Fire Button",
+          0x0B: "Wheel Up", 0x0C: "Wheel Down", 0x0D: "Tilt Left", 0x0E: "Tilt Right", KEY_FUNC: "Keyboard Key",
+          MACRO_FUNC: "Macro", 0x16: "Easy Aim", 0x17: "LED Loop",
+          0x36: "Profile Cycle", 0x37: "Profile +", 0x38: "Profile -",  # not in the X11 (MS_4) menu
+          0x40: "Media Player", 0x41: "Play/Pause", 0x42: "Media Stop", 0x43: "Previous Track", 0x44: "Next Track",
+          0x45: "Volume +", 0x46: "Volume -", 0x47: "Mute",
+          0x50: "Browser Home", 0x51: "Browser Favorites", 0x52: "Browser Forward", 0x53: "Browser Backward",
+          0x54: "Browser Stop", 0x55: "Browser Refresh", 0x56: "Browser Search", 0x57: "Email", 0x58: "Calculator",
+          0x59: "My Computer",
+          # inferred only: unused EN.xml strings power/sleep/wake_up and consecutive ids 0x13..0x15; 0x34 unknown
+          0x13: "System Power (unverified)", 0x73: "System Sleep (unverified)", 0x15: "System Wake Up (unverified)",
+          0x34: "Hidden 0x34 (unknown)"}
 
 
 def key_usage(name):

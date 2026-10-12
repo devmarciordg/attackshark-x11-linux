@@ -100,7 +100,7 @@ def build_parser():
                    help="ms4 (default) or ms13; which one matches the X11 is unverified")
     sub.add_parser("buttons-default", help="write the vendor default button map")
     sub.add_parser("functions", help="list button function codes")
-    p = sub.add_parser("button", help="assign a function to a button, e.g. button 4 0x34 | button 4 key:ctrl+c | button 4 'Left Click'")
+    p = sub.add_parser("button", help="assign a function to a button, e.g. button 4 0x06 | button 4 key:ctrl+c | button 4 'Left Click'")
     p.add_argument("slot", type=int, choices=range(1, 19))
     p.add_argument("function", help="hex code, function name, key:<combo> or macro (see `functions`)")
     p = sub.add_parser("macro", help="write a macro for a button and assign it, e.g. macro 4 --loop 3 +a:30 -a:30")
